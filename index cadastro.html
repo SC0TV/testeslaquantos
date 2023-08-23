@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro - Resultado</title>
+</head>
+<body>
+  <h1>Relatório de Cadastro</h1>
+  <!-- Dados preenchidos aparecem aqui -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const dadosPessoais = [
+      'nome', 'cpf', 'email', 'endereco', 'bairro', 'cidade', 'uf', 'cep', 'nascimento'
+    ];
+
+    const dadosContato = [
+      'celular'
+    ];
+
+    const dadosCadastro = [
+      'login'
+    ];
+
+    function exibirDados(dadosArray) {
+      dadosArray.forEach((campo) => {
+        const valor = urlParams.get(campo);
+        if (valor !== null) {
+          document.write(`<p><strong>${campo}:</strong> ${valor}</p>`);
+        }
+      });
+    }
+
+    exibirDados(dadosPessoais);
+    exibirDados(dadosContato);
+    exibirDados(dadosCadastro);
+  </script>
+</body>
+</html>
